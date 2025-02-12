@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BG color change</title>
+    </head>
+    <body>
+        <button onclick="colorchange()">color color what color do you want</button>
+        <p id="output"></p>
+
+        <script>
+            function colorchange(){
+                let colors=["red","blue","green","yellow","maroon","black","orange"];
+                document.body.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+
+                
+            }
+        </script>
+    </body>
+</html>

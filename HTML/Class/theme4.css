@@ -1,0 +1,10 @@
+
+/* Theme 4: Elegant Purple */
+body { background: #f8f0ff; color: #4a0072; font-family: 'Georgia', serif; }
+h1, h2, h3, h4, h5, h6 { color: #6a0080; border-bottom: 1px dashed #6a0080; }
+ul { list-style-type: square; }
+ol { list-style-type: lower-alpha; }
+p { font-size: 15px; line-height: 1.7; }
+a { color: #800080; text-decoration: none; }
+a:hover { text-decoration: underline; }
+

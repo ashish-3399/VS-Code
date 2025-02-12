@@ -1,0 +1,8 @@
+/* Theme 5: Earthy Brown */
+body { background: #f4e1c6; color: #5a3e1b; font-family: 'Times New Roman', serif; }
+h1, h2, h3, h4, h5, h6 { color: #8b5e3c; border-bottom: 2px solid #8b5e3c; }
+ul { list-style-type: disc; }
+ol { list-style-type: lower-roman; }
+p { font-size: 15px; line-height: 1.5; }
+a { color: #a0522d; text-decoration: none; }
+a:hover { text-decoration: underline; }

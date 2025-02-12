@@ -1,0 +1,8 @@
+/* Theme 1: Classic Blue */
+body { background: #eef; color: #003366; font-family: 'Arial', sans-serif; }
+h1, h2, h3, h4, h5, h6 { color: #002244; border-bottom: 2px solid #002244; }
+ul { list-style-type: square; }
+ol { list-style-type: decimal; }
+p { font-size: 16px; line-height: 1.5; }
+a { color: #0044cc; text-decoration: none; }
+a:hover { text-decoration: underline; }

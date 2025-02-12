@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prime Numbers</title>
+</head>
+<body>
+    <label>Enter N (Number of Primes): </label>
+    <input type="number" id="primeInput">
+    <button onclick="generatePrimes()">Generate</button>
+    <p id="primeResult"></p>
+
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function generatePrimes() {
+            let n = parseInt(document.getElementById("primeInput").value);
+            let primes = [], num = 2;
+            while (primes.length < n) {
+                if (isPrime(num)) primes.push(num);
+                num++;
+            }
+            document.getElementById("primeResult").innerText = "Primes: " + primes.join(", ");
+        }
+    </script>
+</body>
+</html>

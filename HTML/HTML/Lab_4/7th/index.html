@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+    <label>Name: </label>
+    <input type="text" id="studentName"><br><br>
+
+    <label>Marks (5 subjects):</label><br>
+    <input type="number" id="mark1" placeholder="Subject 1">
+    <input type="number" id="mark2" placeholder="Subject 2">
+    <input type="number" id="mark3" placeholder="Subject 3">
+    <input type="number" id="mark4" placeholder="Subject 4">
+    <input type="number" id="mark5" placeholder="Subject 5"><br><br>
+
+    <button onclick="computeGrade()">Submit</button>
+    <p id="gradeResult"></p>
+
+    <script>
+        function computeGrade() {
+            let name = document.getElementById("studentName").value;
+            let marks = [
+                parseFloat(document.getElementById("mark1").value),
+                parseFloat(document.getElementById("mark2").value),
+                parseFloat(document.getElementById("mark3").value),
+                parseFloat(document.getElementById("mark4").value),
+                parseFloat(document.getElementById("mark5").value)
+            ];
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+            let avg = total / marks.length;
+            let grade = "";
+
+            if (avg >= 90) grade = "A+";
+            else if (avg >= 80) grade = "A";
+            else if (avg >= 70) grade = "B";
+            else if (avg >= 60) grade = "C";
+            else if (avg >= 50) grade = "D";
+            else if (avg >= 40) grade = "E";
+            else grade = "F";
+
+            document.getElementById("gradeResult").innerText = `Name: ${name} | Total Marks: ${total} | Grade: ${grade}`;
+        }
+    </script>
+</body>
+</html>

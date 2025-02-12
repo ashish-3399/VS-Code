@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+    <input type="number" id="num1"> 
+    <input type="number" id="num2">
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">*</button>
+    <button onclick="calculate('/')">/</button>
+    <p id="calcResult"></p>
+
+    <script>
+        function calculate(operator) {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let result;
+
+            if (operator === '+') result = n1 + n2;
+            else if (operator === '-') result = n1 - n2;
+            else if (operator === '*') result = n1 * n2;
+            else if (operator === '/') result = n2 !== 0 ? n1 / n2 : "Cannot divide by zero";
+
+            document.getElementById("calcResult").innerText = "Result: " + result;
+        }
+    </script>
+</body>
+</html>

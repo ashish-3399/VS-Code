@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse the String🤙🤙</title>
+</head>
+<body>
+    <label>Enter the dragon: </label>
+    <input type="text" id="string">
+    <button onclick ="reverseip()">Reverse Cheyyamantaara</button>
+    <p id="output"></p>
+    <script>
+        function reverseip(){
+            let input=document.getElementById("string").value;
+            let reversed=input.split("").reverse().join("");
+            document.getElementById("output").innerText="Final: "+reversed;
+
+        }
+    </script>
+</body>
+</html>
+

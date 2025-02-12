@@ -1,0 +1,9 @@
+
+/* Theme 2: Dark Mode */
+body { background: #121212; color: #fff; font-family: 'Courier New', monospace; }
+h1, h2, h3, h4, h5, h6 { color: #ffcc00; }
+ul { list-style-type: circle; }
+ol { list-style-type: upper-roman; }
+p { font-size: 16px; line-height: 1.8; }
+a { color: #ff9900; text-decoration: none; }
+a:hover { text-decoration: underline; }
