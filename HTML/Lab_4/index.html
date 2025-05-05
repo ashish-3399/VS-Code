@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Assignment</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { margin-bottom: 20px; padding: 10px; border: 2px solid #000; border-radius: 10px; background: #f9f9f9; }
+        button { margin: 5px; padding: 5px 10px; cursor: pointer; }
+        input { margin: 5px; padding: 5px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<h2>JavaScript Programs</h2>
+
+<!-- Sum of N Numbers -->
+<div class="container">
+    <h3>1. Sum of N Numbers</h3>
+    <label>Enter number of elements: </label>
+    <input type="number" id="numCount">
+    <button onclick="createInputs()">Submit</button>
+    <div id="inputFields"></div>
+    <button onclick="calculateSum()" class="hidden" id="sumButton">Calculate Sum</button>
+    <p id="sumResult"></p>
+</div>
+
+<!-- Reverse a String -->
+<div class="container">
+    <h3>2. Reverse a String</h3>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <button onclick="reverseStr()">Reverse</button>
+    <p id="reverseResult"></p>
+</div>
+
+<!-- Generate First N Prime Numbers -->
+<div class="container">
+    <h3>3. Generate First N Prime Numbers</h3>
+    <input type="number" id="primeInput" placeholder="Enter N">
+    <button onclick="generatePrimes()">Generate</button>
+    <p id="primeResult"></p>
+</div>
+
+<!-- Change Background Color -->
+<div class="container">
+    <h3>4. Change Background Color</h3>
+    <button onclick="changeBgColor()">Change Color</button>
+</div>
+
+<!-- Age Group -->
+<div class="container">
+    <h3>5. Age Group Finder</h3>
+    <input type="number" id="ageInput" placeholder="Enter Age">
+    <button onclick="getAgeGroup()">Check</button>
+    <p id="ageResult"></p>
+</div>
+
+<!-- Simple Calculator -->
+<div class="container">
+    <h3>6. Simple Calculator</h3>
+    <input type="number" id="calcNum1" placeholder="Enter number 1"> 
+    <input type="number" id="calcNum2" placeholder="Enter number 2">
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">*</button>
+    <button onclick="calculate('/')">/</button>
+    <p id="calcResult"></p>
+</div>
+
+<!-- Student Grade Calculator -->
+<div class="container">
+    <h3>7. Student Grade Calculator</h3>
+    <label>Name: </label>
+    <input type="text" id="studentName"><br><br>
+    <label>Marks (5 subjects):</label><br>
+    <input type="number" id="mark1" placeholder="Subject 1">
+    <input type="number" id="mark2" placeholder="Subject 2">
+    <input type="number" id="mark3" placeholder="Subject 3">
+    <input type="number" id="mark4" placeholder="Subject 4">
+    <input type="number" id="mark5" placeholder="Subject 5"><br><br>
+    <button onclick="computeGrade()">Submit</button>
+    <p id="gradeResult"></p>
+</div>
+
+<script>
+    // 1. Sum of N Numbers
+    function createInputs() {
+        let n = document.getElementById("numCount").value;
+        let inputArea = document.getElementById("inputFields");
+        inputArea.innerHTML = "";
+        for (let i = 0; i < n; i++) {
+            inputArea.innerHTML += `<input type="number" id="num${i}" placeholder="Number ${i + 1}"><br>`;
+        }
+        document.getElementById("sumButton").style.display = "block";
+    }
+
+    function calculateSum() {
+        let n = document.getElementById("numCount").value;
+        let numbers = [];
+        for (let i = 0; i < n; i++) {
+            let value = parseFloat(document.getElementById(`num${i}`).value);
+            if (!isNaN(value)) {
+                numbers.push(value);
+            }
+        }
+        let sum = numbers.reduce((acc, num) => acc + num, 0);
+        document.getElementById("sumResult").innerText = "Sum: " + sum;
+    }
+
+    // 2. Reverse a String
+    function reverseStr() {
+        let str = document.getElementById("stringInput").value;
+        let reversed = str.split("").reverse().join("");
+        document.getElementById("reverseResult").innerText = "Reversed String: " + reversed;
+    }
+
+    // 3. Generate First N Prime Numbers
+    function isPrime(num) {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    function generatePrimes() {
+        let n = parseInt(document.getElementById("primeInput").value);
+        let primes = [], num = 2;
+        while (primes.length < n) {
+            if (isPrime(num)) primes.push(num);
+            num++;
+        }
+        document.getElementById("primeResult").innerText = "Primes: " + primes.join(", ");
+    }
+
+    // 4. Change Background Color
+    function changeBgColor() {
+        let colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+        document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // 5. Age Group
+    function getAgeGroup() {
+        let age = parseInt(document.getElementById("ageInput").value);
+        let category = "";
+        if (age < 13) category = "Child";
+        else if (age < 20) category = "Teenager";
+        else if (age < 60) category = "Young Adult";
+        else category = "Senior Citizen";
+        document.getElementById("ageResult").innerText = "Age Group: " + category;
+    }
+
+    // 6. Simple Calculator
+    function calculate(operator) {
+        let n1 = document.getElementById("calcNum1").value;
+        let n2 = document.getElementById("calcNum2").value;
+
+        if (n1 === "" || n2 === "") {
+            document.getElementById("calcResult").innerText = "Please enter both numbers!";
+            return;
+        }
+
+        let num1 = parseFloat(n1);
+        let num2 = parseFloat(n2);
+        let result;
+
+        switch (operator) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/': 
+                result = num2 !== 0 ? (num1 / num2).toFixed(2) : "Cannot divide by zero"; 
+                break;
+            default: result = "Invalid Operation";
+        }
+
+        document.getElementById("calcResult").innerText = "Result: " + result;
+    }
+
+    // 7. Student Grade Calculator
+    function computeGrade() {
+        let marks = [parseFloat(document.getElementById("mark1").value), parseFloat(document.getElementById("mark2").value), 
+                     parseFloat(document.getElementById("mark3").value), parseFloat(document.getElementById("mark4").value), 
+                     parseFloat(document.getElementById("mark5").value)];
+        let total = marks.reduce((sum, mark) => sum + mark, 0);
+        let avg = total / marks.length;
+        let grade = avg >= 90 ? "A" : avg >= 80 ? "B" : avg >= 70 ? "C" : avg >= 60 ? "D" : "F";
+        document.getElementById("gradeResult").innerText = "Total: " + total + " | Grade: " + grade;
+    }
+</script>
+
+</body>
+</html>
